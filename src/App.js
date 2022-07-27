@@ -1,4 +1,5 @@
 import ExpenseItem from './components/ExpenseItem.js';
+import ExpenseForm from './components/ExpenseForm.js';
 
 function App() {
   const expenses = [
@@ -32,6 +33,7 @@ function App() {
     <div>
       <h2>Let's get started!</h2>
       <div>{row}</div>
+      <ExpenseForm/>
     </div>
   );
 }
