@@ -1,13 +1,19 @@
-
+import React, { useState } from 'react';
 function ExpenseForm() {
+
+    const [enteredTitle, setEnteredTitle] = useState('')
+    const [enteredAmount, setEnteredAmount] = useState('')
+    const [enteredDate, setEnteredDate] = useState('')
+
+
     const titleChangeHandler = (event) => {
-        console.log(event.target.value)
+        setEnteredTitle(event.target.value)
     }
     const amountHandler = (event) => {
-        console.log(event.target.value)
+        setEnteredAmount(event.target.value)
     }
     const dateHandler = (event) => {
-        console.log(event.target.value)
+        setEnteredDate(event.target.value)
     }
     return (
         <form>
