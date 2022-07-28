@@ -1,8 +1,11 @@
-import ExpenseItem from './components/ExpenseItem.js';
-import ExpenseForm from './components/ExpenseForm.js';
 
-function App() {
-  const expenses = [
+import React, { useState } from 'react';
+
+import NewExpense from './component/NewExpense/NewExpense';
+import Expenses from './component/Expenses/Expenses';
+
+const App = () => {
+  const init_expenses = [
     {
       id: 'e1',
       title: 'Toilet Paper',
@@ -24,16 +27,27 @@ function App() {
     },
   ];
 
-  let row = [];
-   for(let i =0; i<expenses.length; i++) {
-    row.push(<ExpenseItem title= {expenses[i].title} date={expenses[i].date} amount = {expenses[i].amount} key={i}/>)
-   }
-  
+  const[expense, setExpenseItem] = useState(init_expenses)
+
+  const addExpenseHandler = expense => {
+   setExpenseItem((prevState) => {
+
+    return [expense, ...prevState]
+   
+   })
+  };
+
+  // return React.createElement(
+  //   'div',
+  //   {},
+  //   React.createElement('h2', {}, "Let's get started!"),
+  //   React.createElement(Expenses, { items: expenses })
+  // );
+
   return (
     <div>
-      <h2>Let's get started!</h2>
-      <div>{row}</div>
-      <ExpenseForm/>
+      <NewExpense onAddExpense={addExpenseHandler}/>
+      <Expenses items={expense} />
     </div>
   );
 }
